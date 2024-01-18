@@ -64,6 +64,35 @@ assert.notEqual(mReloaded, mReloaded2) // passes
 
 In both cases, instances come with a fresh set of dependencies (except for the builtin `node:xxx` modules that don't support query strings at all).
 
+### With dependencies
+
+Suppose these files:
+
+```JS
+// foo.js
+export {x} from "./bar.js"
+
+// bar.js
+export const x = {}
+```
+
+We can then do
+
+```JS
+import "esm-reload"
+
+const foo1 = await import("./foo.js?instance=1")
+const bar1 = await import("./bar.js?instance=1")
+
+const foo2 = await import("./foo.js?instance=2")
+const bar2 = await import("./bar.js?instance=2")
+
+assert.equal(foo1.x, bar1.x)
+assert.equal(foo2.x, bar1.x)
+
+assert.notEqual(bar1.x, bar2.x)
+```
+
 ## Credit:
 
 The hook was originally written by Marcel Laverdet([@laverdet](https://github.com/laverdet)) then tweaked, tested and documented by yours truly.
