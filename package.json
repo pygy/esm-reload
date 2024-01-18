@@ -1,6 +1,6 @@
 {
   "name": "esm-reload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "\"Reload an ES module and its dependencies\"",
   "type": "module",
   "main": "loader.js",
@@ -16,5 +16,10 @@
   "devDependencies": {
     "c8": "^9.1.0",
     "ospec": "^4.2.0"
-  }
+  },
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/pygy/esm-reload.git"
+	},
+  "homepage": "https://github.com/pygy/esm-reload"
 }
