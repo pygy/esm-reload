@@ -9,8 +9,8 @@ Per spec, ES modules are cached the first time they are imported, and subsequent
 ```JS
 import {assert} from 'node:assert/strict'
 
-import * as m1 from './my-module.js'
-import * as m2 from './my-module.js'
+const m1 = await import('./my-module.js')
+const m2 = await import('./my-module.js')
 
 
 assert.equal(m1, m2) // passes
@@ -21,9 +21,9 @@ This is desirable in most scenarios, but you can sometimes want to instantiate a
 ```JS
 import {assert} from 'node:assert/strict'
 
-import * as mDev from './my-module.js?dev'
+const m1 = await import('./my-module.js?dev')
 process.env.NODE_ENV='production'
-import * as mProd from './my-module.js?prod'
+const m2 = await import('./my-module.js?prod')
 
 assert.notEqual(mDev, mProd)  // passes
 ```
