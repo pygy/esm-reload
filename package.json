@@ -1,6 +1,6 @@
 {
   "name": "esm-reload",
-  "version": "INVALID - 1.0.0",
+  "version": "1.0.0",
   "description": "\"Reload an ES module and its dependencies\"",
   "type": "module",
   "main": "loader.js",
